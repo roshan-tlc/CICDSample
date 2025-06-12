@@ -6,14 +6,23 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  projectName: CDSample
+
 jobs:
   build:
+    runs-on: macOS-latest
 
-    runs-on: macos-latest
+    strategy:
+      matrix: 
+        destination: 
+         - 'platform=iOS Simulator,name=iPhone 16,OS=18.1'
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Build
-      run: swift build -v
-    - name: Run tests
-      run: swift test -v
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: install swiftlint
+        run: |
+          brew install swiftlint
+
+

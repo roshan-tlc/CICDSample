@@ -26,7 +26,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: build
-        run: swiftc ContentView.swift -o output
+        run: swiftc CDSampleApp.swift -o output
       - name: run
         run: /.output
 

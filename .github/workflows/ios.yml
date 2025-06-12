@@ -11,7 +11,7 @@ env:
 
 jobs:
   build:
-    runs-on: IOS-latest
+    runs-on: macOS-latest
 
     strategy:
       matrix: 

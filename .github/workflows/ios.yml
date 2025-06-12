@@ -5,11 +5,16 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+env:
+  projectName: CDSample
 
 jobs:
   build:
     runs-on: macos-14  # This runner supports newer Xcode versions (e.g., Xcode 15.4)
-
+    strategy:
+      matrix: 
+        destination: 
+         - platform=iOS Simulator,name=iPhone 15,OS=17.0'
     steps:
       - name: Select Xcode 15.4
         run: sudo xcode-select -s /Applications/Xcode_15.4.app
@@ -20,6 +25,8 @@ jobs:
       - name: Build and Test
         run: |
           xcodebuild clean test \
-          -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.0'
+          - project: projectName
+          - scheme: CDSample
+          
 
 

@@ -24,5 +24,7 @@ jobs:
       - name: install swiftlint
         run: |
           brew install swiftlint
+      - name: run swiftlint
+        run: swiftlint
 
 

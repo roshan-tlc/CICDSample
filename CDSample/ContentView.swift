@@ -16,7 +16,7 @@ struct ContentView: View {
                     .foregroundStyle(.tint)
                 Text("Hello, world!")
                 
-                Text("Welcome To Code")
+                Text("/Users/runner/work/CICDSample/CICDSample/CDSample/ContentView.swift:18:1: warning: Trailing Whitespace Violation: Lines should not have trailing whitespace (trailing_whitespace/Users/runner/work/CICDSample/CICDSample/CDSample/ContentView.swift:18:1: warning: Trailing Whitespace Violation: Lines should not have trailing whitespace (trailing_whitespace/Users/runner/work/CICDSample/CICDSample/CDSample/ContentView.swift:18:1: warning: Trailing Whitespace Violation: Lines should not have trailing whitespace (trailing_whitespace")
             }
         }
         .padding()

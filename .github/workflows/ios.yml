@@ -12,12 +12,6 @@ env:
 jobs:
   build:
     runs-on: macOS-latest
-
-    strategy:
-      matrix: 
-        destination: 
-         - 'platform=iOS Simulator,name=iPhone 16,OS=18.1'
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

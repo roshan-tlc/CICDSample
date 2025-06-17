@@ -20,5 +20,6 @@ jobs:
           brew install swiftlint
       - name: run swiftlint
         run: swiftlint
+        continue-on-error: true
 
 

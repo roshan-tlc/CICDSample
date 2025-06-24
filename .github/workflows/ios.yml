@@ -52,8 +52,8 @@ jobs:
     - name: Build Project
       run: |
         xcodebuild clean build \
-        -project YourProject.xcodeproj \
-        -scheme YourScheme \
+        -project CDSample.xcodeproj \
+        -scheme CDSample \
         -sdk iphoneos \
         -destination 'platform=iOS Simulator,name=iPhone 14,OS=17.0' \
         CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
@@ -62,8 +62,8 @@ jobs:
     - name: Run Unit Tests
       run: |
         xcodebuild test \
-        -project YourProject.xcodeproj \
-        -scheme YourScheme \
+        -project CDSample.xcodeproj \
+        -scheme CDSample \
         -sdk iphonesimulator \
         -destination 'platform=iOS Simulator,name=iPhone 14,OS=17.0'
 

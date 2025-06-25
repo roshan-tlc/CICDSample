@@ -87,8 +87,8 @@ jobs:
     # Environment variables for the job.
     # Replace 'YourApp' with the actual name of your Xcode project and scheme.
     env:
-      XCODE_PROJECT: YourApp.xcodeproj # e.g., MySwiftUIApp.xcodeproj
-      XCODE_SCHEME: YourApp             # e.g., MySwiftUIApp
+      XCODE_PROJECT: CDSample.xcodeproj # e.g., MySwiftUIApp.xcodeproj
+      XCODE_SCHEME: CDSample             # e.g., MySwiftUIApp
       # Specify the target simulator or device for testing.
       # You can find available simulators using `xcrun simctl list devices`.
       IOS_SIMULATOR: iPhone 15 Pro Max

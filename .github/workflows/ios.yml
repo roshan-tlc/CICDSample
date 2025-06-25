@@ -78,3 +78,67 @@ jobs:
           --app YOUR_FIREBASE_APP_ID \
           --groups testers \
           --token "$FIREBASE_TOKEN"
+
+          
+  build-and-test:
+    # The type of runner that the job will run on.
+    # macOS runners are necessary for Xcode projects.
+    runs-on: macos-latest
+
+    # Environment variables for the job.
+    # Replace 'YourApp' with the actual name of your Xcode project and scheme.
+    env:
+      XCODE_PROJECT: YourApp.xcodeproj # e.g., MySwiftUIApp.xcodeproj
+      XCODE_SCHEME: YourApp             # e.g., MySwiftUIApp
+      # Specify the target simulator or device for testing.
+      # You can find available simulators using `xcrun simctl list devices`.
+      IOS_SIMULATOR: iPhone 15 Pro Max
+
+    # Sequence of steps that will be executed as part of this job.
+    steps:
+      - name: Checkout Code
+        # Uses the official action to checkout your repository code.
+        uses: actions/checkout@v4
+
+      - name: Select Xcode Version
+        # Recommended action to select a specific Xcode version if needed.
+        # Otherwise, the default Xcode version on macos-latest will be used.
+        # You can specify a version like '15.0.1' or 'latest'.
+        # uses: swift-actions/setup-xcode@v1
+        # with:
+        #   xcode-version: 'latest'
+
+      - name: Install Swift Package Dependencies (if any)
+        # If your project uses Swift Package Manager (SPM) dependencies,
+        # this step will resolve and download them.
+        # For SPM, `xcodebuild -resolvePackageDependencies` is often sufficient,
+        # but a clean build will also resolve them. This is mostly illustrative.
+        run: |
+          echo "Checking for and resolving Swift Package Manager dependencies..."
+          # This command will clean and then build, which typically resolves packages.
+          # We're just adding a log here to indicate the step.
+          # xcodebuild -resolvePackageDependencies -project $XCODE_PROJECT -scheme $XCODE_SCHEME
+
+      - name: Build Project
+        # Builds the Xcode project for a generic iOS device.
+        # This checks if the code compiles successfully.
+        run: |
+          echo "Building the project..."
+          xcodebuild build \
+            -project "$XCODE_PROJECT" \
+            -scheme "$XCODE_SCHEME" \
+            -destination 'generic/platform=iOS' \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            | xcpretty # Optional: for better formatting of xcodebuild output
+
+      - name: Run Tests
+        # Runs all unit and UI tests defined in your project.
+        # Replace 'YourAppTests' if your test scheme is different.
+        run: |
+          echo "Running tests..."
+          xcodebuild test \
+            -project "$XCODE_PROJECT" \
+            -scheme "$XCODE_SCHEME" \
+            -destination "platform=iOS Simulator,name=$IOS_SIMULATOR" \
+            | xcpretty # Optional: for better formatting of xcodebuild output

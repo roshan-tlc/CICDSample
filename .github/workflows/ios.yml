@@ -50,9 +50,6 @@ jobs:
         xcodebuild clean build \
         -project CDSample.xcodeproj \
         -scheme CDSample \
-        -sdk iphoneos \
-        -destination 'platform=iOS Simulator,name=iPhone 14,OS=17.0' \
-        CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
 
     # Run Unit Tests
     - name: Run Unit Tests
@@ -101,8 +98,8 @@ jobs:
         run: |
           echo "Building the project..."
           xcodebuild build \
-            -project "$XCODE_PROJECT" \
-            -scheme "$XCODE_SCHEME" \
+            -project "$CDSample" \
+            -scheme "$CDSample" \
             -destination 'generic/platform=iOS' \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
@@ -114,7 +111,7 @@ jobs:
         run: |
           echo "Running tests..."
           xcodebuild test \
-            -project "$XCODE_PROJECT" \
-            -scheme "$XCODE_SCHEME" \
+            -project "$CDSample" \
+            -scheme "$CDSample" \
             -destination "platform=iOS Simulator,name=$IOS_SIMULATOR" \
             | xcpretty # Optional: for better formatting of xcodebuild output

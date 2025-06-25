@@ -88,8 +88,8 @@ jobs:
     # Environment variables for the job.
     # Replace 'YourApp' with the actual name of your Xcode project and scheme.
     env:
-      XCODE_PROJECT: YourApp.xcodeproj # e.g., MySwiftUIApp.xcodeproj
-      XCODE_SCHEME: YourApp             # e.g., MySwiftUIApp
+      XCODE_PROJECT: CDSample.xcodeproj # e.g., MySwiftUIApp.xcodeproj
+      XCODE_SCHEME: CDSample             # e.g., MySwiftUIApp
       # Specify the target simulator or device for testing.
       # You can find available simulators using `xcrun simctl list devices`.
       IOS_SIMULATOR: iPhone 15 Pro Max
@@ -104,7 +104,7 @@ jobs:
         # Recommended action to select a specific Xcode version if needed.
         # Otherwise, the default Xcode version on macos-latest will be used.
         # You can specify a version like '15.0.1' or 'latest'.
-        # uses: swift-actions/setup-xcode@v1
+        uses: swift-actions/setup-xcode@v1
         # with:
         #   xcode-version: 'latest'
 
@@ -125,8 +125,8 @@ jobs:
         run: |
           echo "Building the project..."
           xcodebuild build \
-            -project "$XCODE_PROJECT" \
-            -scheme "$XCODE_SCHEME" \
+            -project "$CDSample" \
+            -scheme "$CDSample" \
             -destination 'generic/platform=iOS' \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \

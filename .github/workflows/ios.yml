@@ -104,9 +104,9 @@ jobs:
         # Recommended action to select a specific Xcode version if needed.
         # Otherwise, the default Xcode version on macos-latest will be used.
         # You can specify a version like '15.0.1' or 'latest'.
-        uses: swift-actions/setup-xcode@v1
+        # uses: swift-actions/setup-xcode@v1
         # with:
-        #   xcode-version: 'latest'
+        # xcode-version: 'latest'
 
       - name: Install Swift Package Dependencies (if any)
         # If your project uses Swift Package Manager (SPM) dependencies,
